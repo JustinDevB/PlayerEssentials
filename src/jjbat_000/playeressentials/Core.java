@@ -1,9 +1,14 @@
 package jjbat_000.playeressentials;
 
+import java.util.HashMap;
+import java.util.UUID;
 import java.util.logging.Logger;
+
 import jjbat_000.playeressentials.mondocommand.MondoCommand;
+
 import org.bukkit.plugin.java.JavaPlugin;
 import org.bukkit.event.Listener;
+
 import jjbat_000.playeressentials.commands.*;
 
 /* Main class where everything will be registered.
@@ -14,6 +19,7 @@ import jjbat_000.playeressentials.commands.*;
 public class Core extends JavaPlugin implements Listener {
 	public static Logger logger;
 	public MondoCommand mcmd;
+	public HashMap<UUID, PEPlayer> pePlayers = new HashMap<>();
 	
 	public void onEnable() {
 		logger = getLogger();
@@ -28,6 +34,15 @@ public class Core extends JavaPlugin implements Listener {
 	public void onDisable() {
 		
 	}
+	
+	/**
+     * Used to match a UUID to a PEPlayer
+     * @param Player's UUID
+     * @return Player matching the UUID
+     */
+	 public PEPlayer getPEPlayer(UUID uuid) {
+	        return pePlayers.get(uuid);
+	    }
 	
 	
 	

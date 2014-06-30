@@ -10,6 +10,8 @@ import jjbat_000.playeressentials.util.MessageType;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 
+import com.bobacadodl.LegendsOfEvon.RPGPlayer;
+
 import java.util.Date;
 
 //This is the class that we'll register commands in.
@@ -39,5 +41,41 @@ public class Commands {
      }
            
    }
+
+@Sub(permission = "playeressentials.admin", description = "get a players IP",
+         minArgs = 1, usage = "<player>", allowConsole = true)
+public void getIP(CallInfo call) {
+	String pname = call.getArg(0);
+	@SuppressWarnings("deprecation")
+	Player p = Bukkit.getPlayer(pname);
+	if (p != null) {
+		call.reply("IP of " + p.getPlayer().getName() + " is = " + p.getPlayer().getAddress());
+	} else {
+		call.reply(p + " isn't online!");
+	}
+}
+
+//Try to figure this one out on your own :P I'm not helping unless you really need it.
+
+@Sub(permission = "playeressentials.admin", description = "Get the date a player first joined the server",
+         minArgs = 1, allowConsole = true)
+public void firstJoined(CallInfo call) {
+     PEPlayer player = core.getPEPlayer(call.getPlayer().getUniqueId());
+     if (call.numArgs() == 1) {
+       String pname = call.getArg(0);
+       @SuppressWarnings("deprecation")
+         Player target = Bukkit.getPlayer(pname);
+        PEPlayer t = core.getPEPlayer(t.getUUID());
+        PEPlayer player1 = core.getPEPlayer(call.getPlayer().getUniqueId());
+        @SuppressWarnings("deprecation")
+        Player p = Bukkit.getPlayer(pname);
+     if (t != null) {
+    	 player1.sendMessage(MessageType.SUCCESS, "First joined = " + new Date(p.getFirstPlayed()).toString());
+          
+        } else {
+            player1.sendMessage(MessageType.WARNING, target.getPlayer().getName() + " is not online!");
+}
+}
+}
 
 }
