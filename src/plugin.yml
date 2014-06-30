@@ -1,3 +1,7 @@
 name: PlayerEssentials
 main: jjbat_000.playeressentials.Core
 version: 0.1
+commands:
+  playeressentials:
+      description: PlayerEssentials core command
+      aliases: [pe]
