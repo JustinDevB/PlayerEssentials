@@ -22,6 +22,7 @@ public class Core extends JavaPlugin implements Listener {
 	public HashMap<UUID, PEPlayer> pePlayers = new HashMap<>();
 	
 	public void onEnable() {
+		try {
 		logger = getLogger();
 		
 		 //Command registering
@@ -29,7 +30,10 @@ public class Core extends JavaPlugin implements Listener {
         mcmd.autoRegisterFrom(new Commands(this));
         getCommand("playeressentials").setExecutor(mcmd);
 		
+	} catch (Exception e) {
+		e.printStackTrace();
 	}
+}
 	
 	public void onDisable() {
 		
