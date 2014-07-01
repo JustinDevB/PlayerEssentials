@@ -8,7 +8,7 @@ import jjbat_000.playeressentials.mondocommand.MondoCommand;
 
 import org.bukkit.plugin.java.JavaPlugin;
 import org.bukkit.event.Listener;
-import org.bukkit.event.player.PlayerJoinEvent;
+
 
 import jjbat_000.playeressentials.commands.*;
 
@@ -49,10 +49,6 @@ public class Core extends JavaPlugin implements Listener {
 	        return pePlayers.get(uuid);
 	    }
 	 
-	 public void onJoin(PlayerJoinEvent e) {
-		 e.getPlayer().getName();
-		// loadRank();
-	 }
 	
 	
 	
