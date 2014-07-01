@@ -5,10 +5,15 @@ import jjbat_000.playeressentials.mondocommand.dynamic.Sub;
 import jjbat_000.playeressentials.Core;
 //import jjbat_000.playeressentials.PEPlayer;
 
+
+import jjbat_000.playeressentials.PEPlayer;
+
 //import jjbat_000.playeressentials.util.LocationUtil;
 //import jjbat_000.playeressentials.util.MessageType;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
+
+import com.bobacadodl.LegendsOfEvon.RPGPlayer;
 
 import java.util.Date;
 
@@ -71,4 +76,20 @@ public void firstJoined(CallInfo call) {
  }
     
 }
+
+    @Sub(permission = "playeressentials.admin", description = "Get a players current rank",
+    		minArgs = 1, usage = "<player>", allowConsole = true)
+    public void getRank(CallInfo call) {
+    	if (call.numArgs() == 1) {
+    		String pname = call.getArg(0);
+    		@SuppressWarnings("deprecation")
+    		Player t = Bukkit.getPlayer(pname);
+    		PEPlayer target = core.getPEPlayer(t.getUniqueId());
+    		
+    		if (t != null) {
+    			call.reply(t.getPlayer().getName() + "'s rank is: " + target.getRank());
+    		}
+    	}
+    }
+
 }

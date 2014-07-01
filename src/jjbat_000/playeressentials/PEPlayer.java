@@ -55,6 +55,10 @@ public class PEPlayer {
         getPlayer().sendMessage(MessageUtil.translate(type.getFormat() + message));
     }
 	
+	public Rank getRank() {
+		return rank;
+	}
+	
 	
 	public enum Rank {                  //lists all of our ranks
         ADMIN(ChatColor.DARK_RED),
