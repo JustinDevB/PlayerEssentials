@@ -13,7 +13,7 @@ import jjbat_000.playeressentials.PEPlayer;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 
-import com.bobacadodl.LegendsOfEvon.RPGPlayer;
+
 
 import java.util.Date;
 
