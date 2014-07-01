@@ -8,6 +8,7 @@ import jjbat_000.playeressentials.mondocommand.MondoCommand;
 
 import org.bukkit.plugin.java.JavaPlugin;
 import org.bukkit.event.Listener;
+import org.bukkit.event.player.PlayerJoinEvent;
 
 import jjbat_000.playeressentials.commands.*;
 
@@ -31,7 +32,7 @@ public class Core extends JavaPlugin implements Listener {
         getCommand("playeressentials").setExecutor(mcmd);
 		
 	} catch (Exception e) {
-		e.printStackTrace();
+		e.printStackTrace();          //Print out an error log incase the plugin can't load.
 	}
 }
 	
@@ -47,6 +48,11 @@ public class Core extends JavaPlugin implements Listener {
 	 public PEPlayer getPEPlayer(UUID uuid) {
 	        return pePlayers.get(uuid);
 	    }
+	 
+	 public void onJoin(PlayerJoinEvent e) {
+		 e.getPlayer().getName();
+		// loadRank();
+	 }
 	
 	
 	
