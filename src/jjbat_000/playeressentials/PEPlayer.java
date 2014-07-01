@@ -35,7 +35,7 @@ public class PEPlayer {
             rank = Rank.OWNER;
         } else if (player.hasPermission("playeressentials.guide")) {
             rank = Rank.GUIDE;
-        } else if (player.hasPermission("legendsofevon.donator")) {
+        } else if (player.hasPermission("playeressentials.donator")) {
             rank = Rank.DONATOR;
         }
     }
