@@ -1,14 +1,18 @@
 package jjbat_000.playeressentials;
 
-
+import java.util.HashMap;
 import java.util.UUID;
 
+import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
+//import org.bukkit.Bukkit;
+//import org.bukkit.ChatColor;
 import org.bukkit.entity.Player;
-import org.bukkit.event.player.PlayerJoinEvent;
 
 
-
+//import org.bukkit.event.EventHandler;
+//import org.bukkit.event.EventPriority;
+//import org.bukkit.event.player.PlayerJoinEvent;
 import jjbat_000.playeressentials.util.MessageType;
 import jjbat_000.playeressentials.util.MessageUtil;
 
@@ -20,12 +24,15 @@ import jjbat_000.playeressentials.util.MessageUtil;
 public class PEPlayer {
 	private Rank rank = Rank.DEFAULT;
 	private Player player;
+	public HashMap<UUID, PEPlayer> pePlayers = new HashMap<>();
+    Core core;
+
 	
-	public void onJoin(PlayerJoinEvent e) {
-		e.getPlayer().getName();
-		loadRank();
+	public PEPlayer(Core core, Player player) {
+		this.core = core;
+		this.player = player;
+				
 	}
-	
 	public void loadRank() {
         if (player.hasPermission("playeressentials.admin")) {
             rank = Rank.ADMIN;
@@ -38,21 +45,6 @@ public class PEPlayer {
         } else if (player.hasPermission("playeressentials.donator")) {
             rank = Rank.DONATOR;
         }
-    }
-	
-	 
-	
-	
-	public Player getPlayer() {
-        return this.player;
-    }
-
-	public UUID getUUID() {
-        return getPlayer().getUniqueId();
-    }
-	
-	public void sendMessage(MessageType type, String message) {
-        getPlayer().sendMessage(MessageUtil.translate(type.getFormat() + message));
     }
 	
 	public Rank getRank() {
@@ -84,6 +76,27 @@ public class PEPlayer {
     }
 	
 	
+	public Player getPlayer() {
+        return this.player;
+    }
+
+	public UUID getUUID() {
+        return getPlayer().getUniqueId();
+    }
+	
+	public void sendMessage(MessageType type, String message) {
+        getPlayer().sendMessage(MessageUtil.translate(type.getFormat() + message));
+	}
+
+	
+	/**
+     * Used to match a UUID to a PEPlayer
+     * @param Player's UUID
+     * @return Player matching the UUID
+     */
+	 public PEPlayer getPEPlayer(UUID uuid) {
+	        return pePlayers.get(uuid);
+	    }
 	
 
 }
